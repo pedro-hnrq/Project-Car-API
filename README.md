@@ -85,6 +85,11 @@ Executando o Projeto
 python manage.py runserver
 ```
 
+Teste Unitário
+```python
+python manage.py test
+```
+
 #### 👨🏻‍🚀 Endpoints
 
 Para realiza as requisições dos endpoints, primeiro poderá criar super usuário ou criar dentro do Admin, passando _username_ e _password_ para gerar um Token do JWT(valido por um dia e duranção de 60 minutos, depois tem executar novamente para o Refresh e poderá verificar se já expirando com verify), depois utilizer o Bearer com código de access
@@ -120,7 +125,7 @@ No Django REST Framework - DRF, na parte de Cars não poderá acessar sem Token 
   - localhost:8000/api/v1/cars/1
   - localhost:8000/api/v1/brands/6
 
-No Swagger, podera colocar somente o _access_ no Authorize que gerado por JWT, sem necessita passar Bearer, `Bearer <numero do token do acesso>`.
+No Swagger, poderá colocar somente o _access_ no Authorize que gerado por JWT, sem necessita passar Bearer, `Bearer <numero do token do acesso>`.
 
 - Swagger e Redoc:
   - localhost:8000/api/swagger
