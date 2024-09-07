@@ -1,0 +1,40 @@
+version: "3.10"
+
+services:
+  db:
+    container_name: postgres-car
+    image: postgres:16-alpine
+    restart: always
+    environment:
+      POSTGRES_USER: dev
+      POSTGRES_PASSWORD: Dev1234@
+      POSTGRES_DB: car
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    networks:
+      - car
+
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: project-car
+    stdin_open: true
+    tty: true
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/app
+    command: python manage.py runserver 0.0.0.0:8000
+    depends_on:
+      - db
+    networks:
+      - car
+
+volumes:
+  pgdata:
+
+networks:
+  car:  
