@@ -15,6 +15,8 @@
 
 ### 📷 Prévia
 
+![image](https://github.com/user-attachments/assets/aab9e6bc-a7d0-4d84-9018-059b059a01e5)
+
 
 
 ### 🎯 Objetivo
