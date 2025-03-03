@@ -1,0 +1,9 @@
+SECRET_KEY=django-insecure-9ikgtce5exhf$jf+%j@sdiw4(rn(%1=x5fs1a^xzqqay)z^y_u
+DEBUG=False #True
+
+# DATABASE
+POSTGRES_NAME=car
+POSTGRES_USER=dev
+POSTGRES_PASSWORD=Dev1234@
+POSTGRES_HOST=localhost
+POSTGRES_PORT=5432

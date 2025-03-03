@@ -1,0 +1,1314 @@
+{
+	"info": {
+		"_postman_id": "45f4c667-99e7-4f3f-9162-397fe7f5d4dd",
+		"name": "Project Car API",
+		"description": "Projeto de Gerenciamento de Carros/Marcas usando o JWT, Django REST Framework e Banco de Dados PostgreSQL.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "39682783"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"email\": \"dev@mail.com\",\n  \"password\": \"Dev.1234\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL_DJANGO}}/api/accounts/login/",
+							"host": [
+								"{{BASE_URL_DJANGO}}"
+							],
+							"path": [
+								"api",
+								"accounts",
+								"login",
+								""
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Login",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"email\": \"dev@mail.com\",\n  \"password\": \"Dev.1234\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BASE_URL_DJANGO}}/api/accounts/login/",
+									"host": [
+										"{{BASE_URL_DJANGO}}"
+									],
+									"path": [
+										"api",
+										"accounts",
+										"login",
+										""
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Mon, 03 Mar 2025 23:17:43 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.13.1"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept"
+								},
+								{
+									"key": "Allow",
+									"value": "POST, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "641"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"access_token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQxMDQ1NjYzLCJpYXQiOjE3NDEwNDM4NjMsImp0aSI6ImIxMjM4ZjdiNDUxMjQ3OTBiNWRlMTUyZGQ0ZDZmYjUwIiwidXNlcl9pZCI6MX0.UiiQnn7TUMJSHLW62C8KNZ-0YDKH81P_uXXSjV2_YBs\",\n    \"refresh_token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTc0MTEzMDI2MywiaWF0IjoxNzQxMDQzODYzLCJqdGkiOiJlMTU0OGRmNDliZTM0MzZjYjk4ZDRmNTU2ZTI3ZjQ5ZSIsInVzZXJfaWQiOjF9.R5xOiRazBAfYF5ehul-F7RPAp0xEp9lDveyBe7RjIn8\",\n    \"type\": \"Bearer\",\n    \"expiration_at\": 1741130263,\n    \"issued_at\": 1741043863,\n    \"jti\": \"a362c5d2182a43b598fd576e578c9e0c\",\n    \"user\": {\n        \"id\": 1,\n        \"email\": \"dev@mail.com\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"email\": \"guto@gmail.com\",\n  \"password\": \"Dev.1234\",\n  \"first_name\": \"Guto\",\n  \"last_name\": \"Font\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL_DJANGO}}/api/accounts/register/",
+							"host": [
+								"{{BASE_URL_DJANGO}}"
+							],
+							"path": [
+								"api",
+								"accounts",
+								"register",
+								""
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Register",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"email\": \"guto@gmail.com\",\n  \"password\": \"Dev.1234\",\n  \"first_name\": \"Guto\",\n  \"last_name\": \"Font\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BASE_URL_DJANGO}}/api/accounts/register/",
+									"host": [
+										"{{BASE_URL_DJANGO}}"
+									],
+									"path": [
+										"api",
+										"accounts",
+										"register",
+										""
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Mon, 03 Mar 2025 23:20:08 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.13.1"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept"
+								},
+								{
+									"key": "Allow",
+									"value": "POST, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "65"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"email\": \"guto@gmail.com\",\n    \"first_name\": \"Guto\",\n    \"last_name\": \"Font\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Cars",
+			"item": [
+				{
+					"name": "Full",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL_DJANGO}}/api/v2/cars",
+							"host": [
+								"{{BASE_URL_DJANGO}}"
+							],
+							"path": [
+								"api",
+								"v2",
+								"cars"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Full",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{BASE_URL_DJANGO}}/api/v2/cars",
+									"host": [
+										"{{BASE_URL_DJANGO}}"
+									],
+									"path": [
+										"api",
+										"v2",
+										"cars"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Mon, 03 Mar 2025 23:42:26 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.13.1"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, POST, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "667"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"count\": 1,\n    \"next\": null,\n    \"previous\": null,\n    \"results\": [\n        {\n            \"id\": 1,\n            \"model\": \"Cronos\",\n            \"brand\": \"Audi\",\n            \"color\": \"Vermelha\",\n            \"factory_year\": 2025,\n            \"model_year\": 2025,\n            \"description\": \"O Cronos é um Sedã Compacto da Fiat derivado do Fiat Argo e fabricado pelo grupo Stellantis. Seu nome vem de Chronos, deus do tempo na Mitologia Grega, o mais jovem dos titãs e filho de Urano. Seu propósito inicial era mostrar que a passagem do tempo para a Fiat se materializa em uma jornada de renovação. Ele tem motores 1.0 Firefly Flex de 3 cilindros e 1.\",\n            \"owner\": {\n                \"id\": 1,\n                \"email\": \"dev@mail.com\"\n            },\n            \"created_at\": \"2025-03-03T17:16:01.590602-03:00\",\n            \"updated_at\": \"2025-03-03T17:16:01.590635-03:00\"\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "One",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL_DJANGO}}/api/v2/cars/:id/",
+							"host": [
+								"{{BASE_URL_DJANGO}}"
+							],
+							"path": [
+								"api",
+								"v2",
+								"cars",
+								":id",
+								""
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "One",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{BASE_URL_DJANGO}}/api/v1/cars/:id/",
+									"host": [
+										"{{BASE_URL_DJANGO}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"cars",
+										":id",
+										""
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Mon, 03 Mar 2025 18:23:50 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.13.1"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, PUT, PATCH, DELETE, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "261"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 1,\n    \"model\": \"Fusca\",\n    \"brand\": \"Volkwagen\",\n    \"color\": \"Branco\",\n    \"factory_year\": 1970,\n    \"model_year\": 1970,\n    \"description\": \"Fuscão do Pai!\",\n    \"owner\": {\n        \"id\": 1,\n        \"username\": \"dev\"\n    },\n    \"created_at\": \"2024-09-06T19:50:38.401288-03:00\",\n    \"updated_at\": \"2024-09-06T19:50:38.401320-03:00\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"model\": \"BMW X2\",\n  \"brand\": \"BMW\",\n  \"color\": \"Azul\",\n  \"factory_year\": 2023,\n  \"model_year\": 2024,\n  \"description\": \"Carro esporte\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL_DJANGO}}/api/v2/cars/",
+							"host": [
+								"{{BASE_URL_DJANGO}}"
+							],
+							"path": [
+								"api",
+								"v2",
+								"cars",
+								""
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Create",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"model\": \"BMW X2\",\n  \"brand\": \"BMW\",\n  \"color\": \"Azul\",\n  \"factory_year\": 2023,\n  \"model_year\": 2024,\n  \"description\": \"Carro esporte\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BASE_URL_DJANGO}}/api/v2/cars/",
+									"host": [
+										"{{BASE_URL_DJANGO}}"
+									],
+									"path": [
+										"api",
+										"v2",
+										"cars",
+										""
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Mon, 03 Mar 2025 23:43:46 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.13.1"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, POST, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "258"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 2,\n    \"model\": \"BMW X2\",\n    \"brand\": \"BMW\",\n    \"color\": \"Azul\",\n    \"factory_year\": 2023,\n    \"model_year\": 2024,\n    \"description\": \"Carro esporte\",\n    \"owner\": {\n        \"id\": 1,\n        \"email\": \"dev@mail.com\"\n    },\n    \"created_at\": \"2025-03-03T20:43:46.495246-03:00\",\n    \"updated_at\": \"2025-03-03T20:43:46.495306-03:00\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Update",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"model\": \"BMW X2\",\n  \"brand\": \"BMW\",\n  \"color\": \"Azul\",\n  \"factory_year\": 2023,\n  \"model_year\": 2024,\n  \"description\": \"Carro esporte\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL_DJANGO}}/api/v2/cars/:id/",
+							"host": [
+								"{{BASE_URL_DJANGO}}"
+							],
+							"path": [
+								"api",
+								"v2",
+								"cars",
+								":id",
+								""
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Upate",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"model\": \"BMW X2\",\n  \"brand\": \"BMW\",\n  \"color\": \"Azul\",\n  \"factory_year\": 2023,\n  \"model_year\": 2024,\n  \"description\": \"Carro esporte\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BASE_URL_DJANGO}}/api/v2/cars/:id/",
+									"host": [
+										"{{BASE_URL_DJANGO}}"
+									],
+									"path": [
+										"api",
+										"v2",
+										"cars",
+										":id",
+										""
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Mon, 03 Mar 2025 23:44:36 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.13.1"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, PUT, PATCH, DELETE, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "258"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 1,\n    \"model\": \"BMW X2\",\n    \"brand\": \"BMW\",\n    \"color\": \"Azul\",\n    \"factory_year\": 2023,\n    \"model_year\": 2024,\n    \"description\": \"Carro esporte\",\n    \"owner\": {\n        \"id\": 1,\n        \"email\": \"dev@mail.com\"\n    },\n    \"created_at\": \"2025-03-03T17:16:01.590602-03:00\",\n    \"updated_at\": \"2025-03-03T20:44:35.955418-03:00\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL_DJANGO}}/api/v2/cars/:id/",
+							"host": [
+								"{{BASE_URL_DJANGO}}"
+							],
+							"path": [
+								"api",
+								"v2",
+								"cars",
+								":id",
+								""
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Delete",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{BASE_URL_DJANGO}}/api/v2/cars/:id/",
+									"host": [
+										"{{BASE_URL_DJANGO}}"
+									],
+									"path": [
+										"api",
+										"v2",
+										"cars",
+										":id",
+										""
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"status": "No Content",
+							"code": 204,
+							"_postman_previewlanguage": "plain",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Mon, 03 Mar 2025 23:45:13 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.13.1"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, PUT, PATCH, DELETE, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "0"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": null
+						}
+					]
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQxMDQ1NjYzLCJpYXQiOjE3NDEwNDM4NjMsImp0aSI6ImIxMjM4ZjdiNDUxMjQ3OTBiNWRlMTUyZGQ0ZDZmYjUwIiwidXNlcl9pZCI6MX0.UiiQnn7TUMJSHLW62C8KNZ-0YDKH81P_uXXSjV2_YBs",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Brands",
+			"item": [
+				{
+					"name": "Full",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL_DJANGO}}/api/v2/brands",
+							"host": [
+								"{{BASE_URL_DJANGO}}"
+							],
+							"path": [
+								"api",
+								"v2",
+								"brands"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Full",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{BASE_URL_DJANGO}}/api/v2/brands",
+									"host": [
+										"{{BASE_URL_DJANGO}}"
+									],
+									"path": [
+										"api",
+										"v2",
+										"brands"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Mon, 03 Mar 2025 23:39:17 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.13.1"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, POST, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "1140"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"count\": 2,\n    \"next\": null,\n    \"previous\": null,\n    \"results\": [\n        {\n            \"id\": 2,\n            \"name\": \"BMW\",\n            \"description\": \"Bayerische Motoren Werke AG,(Fábrica de Motores da Baviera) mundialmente conhecida como BMW AG, é uma empresa alemã com sede em Munique, fabricante de automóveis e motocicletas. A BMW não é apenas uma montadora, ela desenvolve, fabrica e comercializa seus produtos e também produz Rolls-Royce Motor Cars e Mini.\",\n            \"created_at\": \"2025-03-03T20:39:01.562032-03:00\",\n            \"updated_at\": \"2025-03-03T20:39:01.562085-03:00\"\n        },\n        {\n            \"id\": 1,\n            \"name\": \"Fiat\",\n            \"description\": \"A Fiat é uma marca global da Fiat Chrysler Automobiles (FCA), o sétimo maior fabricante mundial de automóveis. Com unidades produtivas em 40 países e presença comercial em aproximadamente 150 países, a FCA lidera as vendas no mercado de automóveis e veículos comerciais leves no Brasil. Fundada em 11 de julho de 1899, a Fabbrica Italiana Automobili Torino (FIAT) respondeu ao avanço das montadoras francesas na Itália e rapidamente se tornou a maior montadora de carros do país até 1910.\",\n            \"created_at\": \"2025-03-03T17:14:36.449776-03:00\",\n            \"updated_at\": \"2025-03-03T17:14:36.449848-03:00\"\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "One",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL_DJANGO}}/api/v2/brands/:id/",
+							"host": [
+								"{{BASE_URL_DJANGO}}"
+							],
+							"path": [
+								"api",
+								"v2",
+								"brands",
+								":id",
+								""
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "One",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{BASE_URL_DJANGO}}/api/v2/brands/:id/",
+									"host": [
+										"{{BASE_URL_DJANGO}}"
+									],
+									"path": [
+										"api",
+										"v2",
+										"brands",
+										":id",
+										""
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Mon, 03 Mar 2025 23:40:01 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.13.1"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, PUT, PATCH, DELETE, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "635"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 1,\n    \"name\": \"Fiat\",\n    \"description\": \"A Fiat é uma marca global da Fiat Chrysler Automobiles (FCA), o sétimo maior fabricante mundial de automóveis. Com unidades produtivas em 40 países e presença comercial em aproximadamente 150 países, a FCA lidera as vendas no mercado de automóveis e veículos comerciais leves no Brasil. Fundada em 11 de julho de 1899, a Fabbrica Italiana Automobili Torino (FIAT) respondeu ao avanço das montadoras francesas na Itália e rapidamente se tornou a maior montadora de carros do país até 1910.\",\n    \"created_at\": \"2025-03-03T17:14:36.449776-03:00\",\n    \"updated_at\": \"2025-03-03T17:14:36.449848-03:00\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"BMW\",\n  \"description\": \"Bayerische Motoren Werke AG,(Fábrica de Motores da Baviera) mundialmente conhecida como BMW AG, é uma empresa alemã com sede em Munique, fabricante de automóveis e motocicletas. A BMW não é apenas uma montadora, ela desenvolve, fabrica e comercializa seus produtos e também produz Rolls-Royce Motor Cars e Mini.\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL_DJANGO}}/api/v2/brands/",
+							"host": [
+								"{{BASE_URL_DJANGO}}"
+							],
+							"path": [
+								"api",
+								"v2",
+								"brands",
+								""
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "api/v1/brands",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"name\": \"BMW\",\n  \"description\": \"Bayerische Motoren Werke AG,(Fábrica de Motores da Baviera) mundialmente conhecida como BMW AG, é uma empresa alemã com sede em Munique, fabricante de automóveis e motocicletas. A BMW não é apenas uma montadora, ela desenvolve, fabrica e comercializa seus produtos e também produz Rolls-Royce Motor Cars e Mini.\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BASE_URL_DJANGO}}/api/v2/brands/",
+									"host": [
+										"{{BASE_URL_DJANGO}}"
+									],
+									"path": [
+										"api",
+										"v2",
+										"brands",
+										""
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Mon, 03 Mar 2025 23:39:01 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.13.1"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, POST, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "452"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 2,\n    \"name\": \"BMW\",\n    \"description\": \"Bayerische Motoren Werke AG,(Fábrica de Motores da Baviera) mundialmente conhecida como BMW AG, é uma empresa alemã com sede em Munique, fabricante de automóveis e motocicletas. A BMW não é apenas uma montadora, ela desenvolve, fabrica e comercializa seus produtos e também produz Rolls-Royce Motor Cars e Mini.\",\n    \"created_at\": \"2025-03-03T20:39:01.562032-03:00\",\n    \"updated_at\": \"2025-03-03T20:39:01.562085-03:00\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Update",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Audi\",\n  \"description\": \"A Audi AG é uma fabricante alemã de veículos de luxo, com sede em Ingolstadt, Baviera, Alemanha. Ela é uma subsidiária do Grupo Volkswagen e produz carros em nove instalações de produção em todo o mundo. A história da Audi remonta ao início do século XX, com as empresas iniciais (Horch e Audiwerke) fundadas pelo engenheiro August Horch. Em 1932, outras duas fabricantes (DKW e Wanderer) contribuíram para a criação da Auto Union.\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL_DJANGO}}/api/v2/brands/:id/",
+							"host": [
+								"{{BASE_URL_DJANGO}}"
+							],
+							"path": [
+								"api",
+								"v2",
+								"brands",
+								":id",
+								""
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Update",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"name\": \"Audi\",\n  \"description\": \"A Audi AG é uma fabricante alemã de veículos de luxo, com sede em Ingolstadt, Baviera, Alemanha. Ela é uma subsidiária do Grupo Volkswagen e produz carros em nove instalações de produção em todo o mundo. A história da Audi remonta ao início do século XX, com as empresas iniciais (Horch e Audiwerke) fundadas pelo engenheiro August Horch. Em 1932, outras duas fabricantes (DKW e Wanderer) contribuíram para a criação da Auto Union.\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BASE_URL_DJANGO}}/api/v2/brands/:id/",
+									"host": [
+										"{{BASE_URL_DJANGO}}"
+									],
+									"path": [
+										"api",
+										"v2",
+										"brands",
+										":id",
+										""
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Mon, 03 Mar 2025 23:41:14 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.13.1"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, PUT, PATCH, DELETE, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "581"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 1,\n    \"name\": \"Audi\",\n    \"description\": \"A Audi AG é uma fabricante alemã de veículos de luxo, com sede em Ingolstadt, Baviera, Alemanha. Ela é uma subsidiária do Grupo Volkswagen e produz carros em nove instalações de produção em todo o mundo. A história da Audi remonta ao início do século XX, com as empresas iniciais (Horch e Audiwerke) fundadas pelo engenheiro August Horch. Em 1932, outras duas fabricantes (DKW e Wanderer) contribuíram para a criação da Auto Union.\",\n    \"created_at\": \"2025-03-03T17:14:36.449776-03:00\",\n    \"updated_at\": \"2025-03-03T20:41:14.396382-03:00\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL_DJANGO}}/api/v2/brands/:id/",
+							"host": [
+								"{{BASE_URL_DJANGO}}"
+							],
+							"path": [
+								"api",
+								"v2",
+								"brands",
+								":id",
+								""
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Delete",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{BASE_URL_DJANGO}}/api/v2/brands/:id/",
+									"host": [
+										"{{BASE_URL_DJANGO}}"
+									],
+									"path": [
+										"api",
+										"v2",
+										"brands",
+										":id",
+										""
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"status": "No Content",
+							"code": 204,
+							"_postman_previewlanguage": "plain",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Mon, 03 Mar 2025 23:45:44 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.13.1"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, PUT, PATCH, DELETE, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "0"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": null
+						}
+					]
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQxMDQ1NjYzLCJpYXQiOjE3NDEwNDM4NjMsImp0aSI6ImIxMjM4ZjdiNDUxMjQ3OTBiNWRlMTUyZGQ0ZDZmYjUwIiwidXNlcl9pZCI6MX0.UiiQnn7TUMJSHLW62C8KNZ-0YDKH81P_uXXSjV2_YBs",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		}
+	]
+}

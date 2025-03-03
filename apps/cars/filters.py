@@ -15,6 +15,6 @@ class CarFilterClass(AutoRQLFilterClass):
         },
         {
             'filter': 'owner',
-            'source': 'owner__username',
+            'source': 'owner__email',
         },
     ]

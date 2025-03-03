@@ -8,14 +8,18 @@ from drf_spectacular.views import (SpectacularAPIView,
 urlpatterns = [
     path('admin/', admin.site.urls),
 
+    # Auth Token JWT
+    path('api/', include('accounts.urls')),
+
     # Endpoint
-    path('api/v1/', include('cars.urls')),
+    path('api/v2/', include('cars.urls')),
     path('api-auth/', include('rest_framework.urls')),
 
+
     # JWT
-    path('api/v1/token/', jwt_views.TokenObtainPairView.as_view(), name='token_obtain_pair'),
-    path('api/v1/token/refresh/', jwt_views.TokenRefreshView.as_view(), name='token_refresh'),
-    path('api/v1/token/verify/', jwt_views.TokenVerifyView.as_view(), name='token_verify'),
+    # path('api/v2/token/', MyTokenObtainPairView.as_view(), name='token_obtain_pair'),
+    path('api/v2/token/refresh/', jwt_views.TokenRefreshView.as_view(), name='token_refresh'),
+    path('api/v2/token/verify/', jwt_views.TokenVerifyView.as_view(), name='token_verify'),
 
     # Swagger
     path('api/schema/', SpectacularAPIView.as_view(), name='schema'),
