@@ -1,5 +1,5 @@
 from django.db import models
-from django.contrib.auth.models import User
+from django.conf import settings
 from django.utils.translation import gettext_lazy as _
 
 
@@ -25,8 +25,8 @@ class Car(models.Model):
     factory_year = models.IntegerField(_('Ano de fabricação'), null=True)
     model_year = models.IntegerField(_('Ano do modelo'), null=True)
     color = models.CharField(_('Cor'), max_length=50, null=True, blank=True)
-    owner = models.ForeignKey(User, on_delete=models.PROTECT, null=True,
-                              verbose_name='Proprietário')
+    owner = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.PROTECT,
+                                null=True, verbose_name='Proprietário')
     description = models.TextField(_('Descrição'), null=True, blank=True)
     created_at = models.DateTimeField(_('Criado em'), auto_now_add=True)
     updated_at = models.DateTimeField(_('Atualizado em'), auto_now=True)

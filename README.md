@@ -41,7 +41,6 @@ Antes de começar, verifique se você atendeu aos seguintes requisitos:
 
 #### 🛠️ Instalação
 
-Os comandos a baixo é para usuário do `Unix` ou no `MacOS`.
 
 🦑 Faça o clone do projeto:
 
@@ -52,8 +51,11 @@ Após clonar o repositório acesse o diretório
 ```
 cd Project-Car-API
 ``` 
+execute os comandos abaixo para criar arquivo de variáveis de ambiente a partir de exemplos. (Lembre-se de modificá-los)
 
-
+```
+mv env .env
+``` 
 
 #### 🎟️ Ambiente Virtual
 Criar Virtualização
@@ -94,38 +96,47 @@ python manage.py test
 
 #### 👨🏻‍🚀 Endpoints
 
-Para realiza as requisições dos endpoints, primeiro poderá criar super usuário ou criar dentro do Admin, passando _username_ e _password_ para gerar um Token do JWT(valido por um dia e duranção de 60 minutos, depois tem executar novamente para o Refresh e poderá verificar se já expirando com verify), depois utilizer o Bearer com código de access
+Para realiza as requisições dos endpoints, primeiro poderá criar via requisição do endpoint `register`, ou super usuário no terminal (`python manage.py createsuperuser`) ou criar dentro do Admin, passando _email_ e _password_ para gerar um Token do JWT(valido por um dia e duranção de 60 minutos, depois tem executar novamente para o Refresh e poderá verificar se já expirando com verify), depois utilizer o Bearer com código de access
 
  - JWT
-   - localhost:8000/api/v1/token/
+   - localhost:8000/api/accounts/login
 
         ```
         {
-        "username": "string",
+        "email": "user@example.com",
         "password": "string"
         }
         ```
- 
+    - localhost:8000/api/accounts/login
+        ```
+        {
+          "email": "user@example.com",
+          "password": "string",
+          "first_name": "string",
+          "last_name": "string"
+        }
+        ```
+
    - localhost:8000/api/v1/refresh
    - localhost:8000/api/v1/token/verify
 
-No Django REST Framework - DRF, na parte de Cars não poderá acessar sem Token JWT e como não tem como colocar o token(Por causa da permissão que foi colocando no Projeto), recomenta usar algum software (Postman) ou aplicação do VScode (Thunder Client) para realizar as requisições da API, somente o Brands consegue fazer a requisições.
+No Django REST Framework - DRF, na parte de Cars ou Brands não poderá acessar sem Token JWT, exceto no metodo GET na parte `/brands` que não necessita de token. Dessa forma, recomenta usar algum software (Postman) ou aplicação do VScode (Thunder Client), ou até Swagger para realizar as requisições da API, somente o Brands consegue fazer a requisições.
 
 - GET
-  - localhost:8000/api/v1/cars/
-  - localhost:8000/api/v1/brands/
+  - localhost:8000/api/v2/cars/
+  - localhost:8000/api/v2/brands/
 
 - POST
-  - localhost:8000/api/v1/cars/
-  - localhost:8000/api/v1/brands/
+  - localhost:8000/api/v2/cars/
+  - localhost:8000/api/v2/brands/
 
 - PUT | PACTH
-  - localhost:8000/api/v1/cars/3
-  - localhost:8000/api/v1/brands/7
+  - localhost:8000/api/v2/cars/3
+  - localhost:8000/api/v2/brands/7
   
 - DELETE
-  - localhost:8000/api/v1/cars/1
-  - localhost:8000/api/v1/brands/6
+  - localhost:8000/api/v2/cars/1
+  - localhost:8000/api/v2/brands/6
 
 No Swagger, poderá colocar somente o _access_ no Authorize que gerado por JWT, sem necessita passar Bearer, `Bearer <numero do token do acesso>`.
 

@@ -1,18 +1,20 @@
 from pathlib import Path
 from datetime import timedelta
+from decouple import config
+from os import path
+import os
+import sys
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+PROJECT_ROOT = path.dirname(__file__)
+sys.path.insert(0, path.join(PROJECT_ROOT, '../apps'))
 
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
-
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-9ikgtce5exhf$jf+%j@sdiw4(rn(%1=x5fs1a^xzqqay)z^y_u'
+SECRET_KEY = config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = config('DEBUG')
 
 ALLOWED_HOSTS = ['0.0.0.0', 'localhost', '127.0.0.1']
 
@@ -29,6 +31,7 @@ INSTALLED_APPS = [
 
     # My APPs
     'cars',
+    'accounts',
 
     # Other APPs
     'rest_framework',   
@@ -73,16 +76,12 @@ WSGI_APPLICATION = 'core.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME':  'car',
-        'USER':  'dev',
-        'PASSWORD': 'Dev1234@',
-        'HOST':  'localhost',  
-        'PORT':  '5432',
+        'NAME':  config('POSTGRES_NAME'),
+        'USER':  config('POSTGRES_USER'),
+        'PASSWORD': config('POSTGRES_PASSWORD'),
+        'HOST':  config('POSTGRES_HOST'),  
+        'PORT':  config('POSTGRES_PORT'),
     },
-    # 'default': {
-    #     'ENGINE': 'django.db.backends.sqlite3',
-    #     'NAME': BASE_DIR / 'db.sqlite3',
-    # }
 }
 
 
@@ -134,16 +133,22 @@ REST_FRAMEWORK = {
         'rest_framework_simplejwt.authentication.JWTAuthentication',
     ],
     'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
+        'rest_framework.permissions.IsAuthenticated',
+        'rest_framework.permissions.DjangoModelPermissions'
     ],
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
+    'PAGE_SIZE': 10
     
 }
 
+AUTH_USER_MODEL = 'accounts.User'
 
 # JWT
 SIMPLE_JWT = {
-    "ACCESS_TOKEN_LIFETIME": timedelta(minutes=60),
+    "ACCESS_TOKEN_LIFETIME": timedelta(minutes=30),
     "REFRESH_TOKEN_LIFETIME": timedelta(days=1),
+    # "TOKEN_OBTAIN_SERIALIZER": "accounts.serializers.CustomTokenObtainPairSerializer",
+    # "USER_ID_FIELD": "id",
 }
 
 
@@ -151,7 +156,12 @@ SIMPLE_JWT = {
 SPECTACULAR_SETTINGS = {
     'TITLE': 'Project CAR API',
     'DESCRIPTION': 'Gerenciamento de Veículo para o usuário',
-    'VERSION': '1.0.0',
+    'VERSION': '2.0.0',
     'SERVE_INCLUDE_SCHEMA': False,
+    'TAGS': [
+        {'name': 'Brands', 'description': 'Operações relacionadas a marcas de carros.'},
+        {'name': 'Cars', 'description': 'Operações relacionadas a carros.'},
+        {'name': 'Auth', 'description': 'Operações de autenticação e geração de tokens.'},
+    ],
     # OTHER SETTINGS
 }
