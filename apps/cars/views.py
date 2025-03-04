@@ -22,4 +22,4 @@ class CarModelViewSet(viewsets.ModelViewSet):
     serializer_class = CarModelSerializer
     filter_backends = [RQLFilterBackend]
     rql_filter_class = CarFilterClass
-    permission_classes = [permissions.DjangoModelPermissions, CarOwnerPermission,]
+    permission_classes = [permissions.IsAuthenticated, CarOwnerPermission,]

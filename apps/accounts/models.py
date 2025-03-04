@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import AbstractUser, BaseUserManager
 from django.utils.translation import gettext_lazy as _
 
+
 class CustomUserManager(BaseUserManager):
     use_in_migrations = True
 
@@ -23,6 +24,7 @@ class CustomUserManager(BaseUserManager):
             raise ValueError('Superusuários precisam ter is_superuser=True.')
         return self.create_user(email, password, **extra_fields)
 
+
 class User(AbstractUser):
     username = None
     email = models.EmailField('Email', unique=True)
@@ -30,7 +32,7 @@ class User(AbstractUser):
     last_name = models.CharField('Sobrenome', max_length=150, blank=True)
 
     USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = ['first_name', 'last_name']  
+    REQUIRED_FIELDS = ['first_name', 'last_name']
 
     class Meta():
         db_table = "accounts"

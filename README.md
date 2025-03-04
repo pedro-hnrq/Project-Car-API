@@ -4,7 +4,7 @@
 <a href="#-prévia">Prévia</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#-objetivo">Objetivo</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#️-instalação">Instalação</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#-endpoints">Endpoints</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#️-apis">APIs</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#-dbeaver--postgresql">Banco de Dados</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#-docker">Docker</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#-conclusão">Conclusão</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
@@ -21,14 +21,23 @@
 
 ### 🎯 Objetivo
 
-<h5 align="justify">O Projeto Car API, é um desafio cujo objetivo é criar uma aplicação web em Python/Django para gerenciar os endpoints dos carros. A aplicação permite efetua um CRUD (listar, criar, atualizar e excluir), permissões e token com JWT. Além disso, os dados obtidos da API são armazenados e manipulados em um banco de dados PostgreSQL e Docker, implementando operações CRUD completas para os dados armazenados..</h5>
+Este projeto Car API foi desenvolvido como uma forma de aprimorar meus conhecimentos e habilidades em desenvolvimento de software, explorando tecnologias modernas e práticas recomendadas. O objetivo principal foi criar uma API robusta e eficiente, capaz de gerenciar dados de carros e marcas, utilizando Django REST Framework, PostgreSQL e Docker.
+
+Através deste projeto, pude:
+
+* Consolidar meus conhecimentos em desenvolvimento de APIs RESTful com Django REST Framework.
+* Aprofundar meu entendimento sobre autenticação e autorização com JWT.
+* Explorar o uso de bancos de dados relacionais com PostgreSQL.
+* Aprender a containerizar aplicações com Docker e Docker Compose.
+* Praticar testes unitários para garantir a qualidade do código.
+* Utilizar ferramentas como Postman e Swagger para testar e documentar a API.
 
 
 ### 🚀 Como executar 
 
 #### 💻 Pré-requisitos
 
-Antes de começar, verifique se você atendeu aos seguintes requisitos:
+Antes de começar, verifique se atendeu aos seguintes requisitos:
 
 - Python 
 - Django 
@@ -37,6 +46,7 @@ Antes de começar, verifique se você atendeu aos seguintes requisitos:
 - PostgreSQL
 - Docker
 - Docker Compose
+- Postman(opcional)
 
 
 #### 🛠️ Instalação
@@ -94,55 +104,148 @@ Teste Unitário
 python manage.py test
 ```
 
-#### 👨🏻‍🚀 Endpoints
+#### 🗺️ APIs
 
-Para realiza as requisições dos endpoints, primeiro poderá criar via requisição do endpoint `register`, ou super usuário no terminal (`python manage.py createsuperuser`) ou criar dentro do Admin, passando _email_ e _password_ para gerar um Token do JWT(valido por um dia e duranção de 60 minutos, depois tem executar novamente para o Refresh e poderá verificar se já expirando com verify), depois utilizer o Bearer com código de access
+Este guia detalhado irá te mostrar como usar a API de Carros e Marcas, desde a autenticação até a realização de operações com carros e marcas.
 
- - JWT
-   - localhost:8000/api/accounts/login
+🔐 Autenticação - JWT
+ 
+ Antes de começarmos a interagir com a API, precisamos obter um token de acesso JWT (JSON Web Token). Esse token é como uma chave que garante que você tenha permissão para acessar os recursos protegidos da API.
 
-        ```
-        {
+ Existem três maneiras de obter um token:
+
+ 1. Criar um usuário: Você pode criar um usuário diretamente pela API. 
+ Endpoint: `POST /api/accounts/register`
+    ```
+      {
         "email": "user@example.com",
-        "password": "string"
-        }
-        ```
-    - localhost:8000/api/accounts/login
-        ```
-        {
-          "email": "user@example.com",
-          "password": "string",
-          "first_name": "string",
-          "last_name": "string"
-        }
-        ```
+        "password": "your_password",
+        "first_name": "John",
+        "last_name": "Doe"
+      }
+    ```
+    Sucesso da resposta (201 Created)
+    ```
+      {
+        "email": "user@example.com",
+        "first_name": "John",
+        "last_name": "Doe"
+      }
+    ```
 
-   - localhost:8000/api/v1/refresh
-   - localhost:8000/api/v1/token/verify
+ 2. Superusuário: Utilize o comando `python manage.py createsuperuser` no terminal para criar um superusuário com acesso total.
+ 3. Painel Admin: Acesse o painel de administração do Django e crie um usuário por lá.
 
-No Django REST Framework - DRF, na parte de Cars ou Brands não poderá acessar sem Token JWT, exceto no metodo GET na parte `/brands` que não necessita de token. Dessa forma, recomenta usar algum software (Postman) ou aplicação do VScode (Thunder Client), ou até Swagger para realizar as requisições da API, somente o Brands consegue fazer a requisições.
+Após criar o usuário, você pode obter o token JWT usando login, fornecendo o email e a senha do usuário.
 
-- GET
-  - localhost:8000/api/v2/cars/
-  - localhost:8000/api/v2/brands/
+Endpoint: `POST /api/accounts/login`
+```
+{
+    "email": "user@example.com",
+    "password": "string"
+}
+```
+Sucesso da resposta (200 OK)
+```
+{
+  "access_token": "your_jwt_token",
+  "refresh_token": "your_refresh_token",
+  "type": "Bearer",
+  "expiration_at": 1741130263,
+  "issued_at": 1741043863,
+  "user": {
+    "id": 1,
+    "email": "user@example.com"
+  }
+}
+```
 
-- POST
-  - localhost:8000/api/v2/cars/
-  - localhost:8000/api/v2/brands/
+_Lembre-se_:
 
-- PUT | PACTH
-  - localhost:8000/api/v2/cars/3
-  - localhost:8000/api/v2/brands/7
-  
-- DELETE
-  - localhost:8000/api/v2/cars/1
-  - localhost:8000/api/v2/brands/6
+- O token JWT tem validade de um dia e duração de 60 minutos. Após esse período, você precisará renová-lo usando o endpoint `POST /api/v1/refresh`.
+- Você pode verificar se o token expirou usando o endpoint POST `/api/v1/token/verify`.
 
-No Swagger, poderá colocar somente o _access_ no Authorize que gerado por JWT, sem necessita passar Bearer, `Bearer <numero do token do acesso>`.
+ 🚗 Cars Endpoints
+ 
+ | **Método**   | **Endpoint** | **Descrição** |  **Autenticação** |
+|------------|-----------|------------------|------------------|
+| GET       |  `/api/v2/cars/` | Lista todos os carros    |  SIM  |
+|  GET | `/api/v2/cars/:id/`   | Obtenha detalhes individuais do carro   |  SIM |
+| POST     | `/api/v2/cars/`   | Criar novo carro |  SIM |
+|  PUT | `/api/v2/cars/:id/`   | Atualizar registro completo do carro   | SIM  |
+| PATCH     | `/api/v2/cars/:id`   | Atualização parcial | SIM  |
+| DELETE     | `/api/v2/cars/:id/`   | Deleta registro do carro | SIM  |
 
-- Swagger e Redoc:
-  - localhost:8000/api/swagger
-  - localhost:8000/api/redoc
+Exemplo de requisição POST:
+```
+{
+  "model": "BMW X2",
+  "brand": "BMW",
+  "color": "Blue",
+  "factory_year": 2023,
+  "model_year": 2024,
+  "description": "Sports car"
+}
+```
+
+🏭 Brands Endpoints
+
+| **Método**   | **Endpoint** | **Descrição** |  **Autenticação** |
+|------------|-----------|------------------|------------------|
+| GET       |  `/api/v2/brands/` | Lista todos os marcas    |  Não  |
+|  GET | `/api/v2/brands/:id/`   | Obtenha detalhes individuais da marca   |  Não |
+| POST     | `/api/v2/brands/`   | Criar novo marca |  SIM |
+|  PUT | `/api/v2/brands/:id/`   | Atualizar registro completo da marca   | SIM  |
+| PATCH     | `/api/v2/brands/:id`   | Atualização parcial | SIM  |
+| DELETE     | `/api/v2/brands/:id/`   | Deleta registro da marca | SIM  |
+
+Exemplo de requisição POST:
+```
+{
+  "name": "BMW",
+  "description": "German automotive manufacturer..."
+}
+```
+🧩 Swagger e Redoc
+
+A API de Carros e Marcas também oferece documentação interativa através do Swagger e do Redoc.
+
+- Swagger: `http://localhost:8000/api/swagger`
+- Redoc: `http://localhost:8000/api/redoc`
+
+
+_Dica_: No Swagger, você pode simplesmente colar o access_token no campo "Authorize" sem precisar adicionar "Bearer" antes.
+
+
+👨🏻‍🚀 Postman
+
+Importe a Coleção Postman (link para arquivo JSON)
+
+Defina a variável de ambiente:
+
+`BASE_URL_DJANGO = http://localhost:8000`
+
+Estrutura da coleção:
+```
+Project Car API
+├── Auth
+│   ├── Login
+│   └── Register
+├── Cars
+│   ├── List All
+│   ├── Get Single
+│   ├── Create
+│   ├── Update
+│   └── Delete
+└── Brands
+    ├── List All
+    ├── Get Single
+    ├── Create
+    ├── Update
+    └── Delete
+
+```
+
 
 
 #### 🦫 Dbeaver | PostgreSQL
@@ -158,45 +261,58 @@ Para visualizar as as tabelas no banco de dados, poderá usar o `DBeaver Communt
 
 #### 🐋 DOCKER
 
+Para facilitar a execução e o desenvolvimento da API, utilizamos o Docker para criar um ambiente isolado e consistente. Siga os passos abaixo para colocar a API para rodar em um contêiner:
 
-Antes de tudo, construa e execute o contêiner Docker:
+1. Configurando o `.env`:
+
+    Altere a variável `POSTGRES_HOST` de `localhost` para `db`.
+
+2. Iniciando os Contêineres: 
+
+    Navegue até o diretório `Docker` e execute o seguinte comando para construir e iniciar os contêineres:
 
 
-```bash
-docker compose up --build
-```
+    ```bash
+    docker compose up --build
+    ```
+3. Aplicando as Migrações:
 
-Carregando as `migrates` e `runserver`, acesse:
+    Após iniciar os contêineres, execute o seguinte comando para aplicar as migrações do banco de dados PostgreSQL:
 
-Após iniciar o contêiner, aplique as migrações no banco de dados PostgreSQL:
-```bash
-docker compose exec app python manage.py migrate
-```
+    ```bash
+    docker compose exec app python manage.py migrate
+    ```
+4. Criando um Superusuário:
+    
+    Para acessar o painel administrativo do Django, crie um superusuário com o seguinte comando:
+    ```bash
+    docker compose exec app python manage.py createsuperuser
+    ```
 
-**Acesso ao Site e Painel Administrativo**
+5. Iniciando o Servidor de Desenvolvimento:
 
-Para acessar no site e no painel administrativo, crie um superusuário com o seguinte comando:
-```bash
-docker compose exec app python manage.py createsuperuser
-```
-```bash
-docker compose exec app python manage.py runserver
-```
+    Inicie o servidor de desenvolvimento do Django com o seguinte comando:
 
-Para iniciar novamente:
-```bash
-docker compose up -d
-```
- Iniciar somente o Banco de Dados:
+    ```bash
+    docker compose exec app python manage.py runserver 0.0.0.0:8000
+    ```
 
-```bash
-docker compose up -d db
-```
+6. Outros Comandos Úteis:
 
-Para poder **Parar** a aplicação no docker basta executar
-```bash
-docker compose down
-```
+    Para iniciar novamente:
+    ```bash
+    docker compose up -d
+    ```
+    Iniciar somente o Banco de Dados:
+
+    ```bash
+    docker compose up -d db
+    ```
+
+    Para poder **Parar** a aplicação no docker basta executar
+    ```bash
+    docker compose down
+    ```
 
 
 
@@ -204,7 +320,17 @@ docker compose down
 
 #### 📓 Conclusão
 
-<h5 align="justify">O Projeto Car API integra uma aplicação Django REST Framework com uma API externa, realizando operações CRUD em brands e Cars, assim, e armazenando dados em um banco de dados PostgreSQL. </h5>
+O Projeto Car API é uma aplicação Django REST Framework completa e robusta, que oferece funcionalidades de CRUD para carros e marcas, utilizando um banco de dados PostgreSQL para armazenamento persistente.
+
+Para garantir a qualidade e a confiabilidade da API, foram utilizados os seguintes recursos e ferramentas:
+
+- Docker: Para criar um ambiente de desenvolvimento isolado e consistente.
+- Postman/Swagger: Para testar e documentar os endpoints da API de forma interativa.
+- Testes Unitários: Para garantir que cada componente da API funcione corretamente e para prevenir regressões.
+
+Além disso, a API utiliza autenticação JWT para proteger os endpoints e garantir que apenas usuários autorizados possam acessar os recursos protegidos.
+
+Com este projeto, poderá gerenciar carros e marcas de forma eficiente e segura, seja para uso pessoal ou para integrar em outras aplicações.
 
 
 ## Licença

@@ -3,7 +3,7 @@ from rest_framework import status
 from rest_framework.test import APITestCase
 from cars.models import Brand, Car
 from django.contrib.auth.models import User
-from rest_framework_simplejwt.tokens import RefreshToken
+
 
 class JWTAuthMixin:
     def obtain_jwt_token(self):
@@ -20,6 +20,7 @@ class JWTAuthMixin:
         self.user = User.objects.create_superuser(username=self.username, password=self.password)
         self.access_token = self.obtain_jwt_token()
         self.client.credentials(HTTP_AUTHORIZATION='Bearer ' + self.access_token)
+
 
 class BrandTests(JWTAuthMixin, APITestCase):
     def setUp(self):
@@ -51,6 +52,7 @@ class BrandTests(JWTAuthMixin, APITestCase):
         response = self.client.delete(self.detail_url(brand.id))
         self.assertEqual(response.status_code, status.HTTP_204_NO_CONTENT)
         self.assertEqual(Brand.objects.count(), 0)
+
 
 class CarTests(JWTAuthMixin, APITestCase):
     def setUp(self):

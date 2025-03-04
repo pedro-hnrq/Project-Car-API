@@ -18,16 +18,16 @@ services:
 
   app:
     build:
-      context: .
-      dockerfile: Dockerfile
+      context: ..
+      dockerfile: Docker/Dockerfile
     container_name: project-car
     stdin_open: true
     tty: true
     ports:
       - "8000:8000"
     volumes:
-      - .:/app
-    command: python manage.py runserver 0.0.0.0:8000
+      - ../:/app
+    command: tail -f /dev/null
     depends_on:
       - db
     networks:
@@ -37,4 +37,4 @@ volumes:
   pgdata:
 
 networks:
-  car:  
+  car:
