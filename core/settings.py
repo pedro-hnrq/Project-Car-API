@@ -2,7 +2,6 @@ from pathlib import Path
 from datetime import timedelta
 from decouple import config
 from os import path
-import os
 import sys
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -34,7 +33,7 @@ INSTALLED_APPS = [
     'accounts',
 
     # Other APPs
-    'rest_framework',   
+    'rest_framework',
     'rest_framework_simplejwt',
     'drf_spectacular',
 ]
@@ -76,11 +75,11 @@ WSGI_APPLICATION = 'core.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME':  config('POSTGRES_NAME'),
-        'USER':  config('POSTGRES_USER'),
+        'NAME': config('POSTGRES_NAME'),
+        'USER': config('POSTGRES_USER'),
         'PASSWORD': config('POSTGRES_PASSWORD'),
-        'HOST':  config('POSTGRES_HOST'),  
-        'PORT':  config('POSTGRES_PORT'),
+        'HOST': config('POSTGRES_HOST'),
+        'PORT': config('POSTGRES_PORT'),
     },
 }
 
@@ -138,7 +137,6 @@ REST_FRAMEWORK = {
     ],
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
     'PAGE_SIZE': 10
-    
 }
 
 AUTH_USER_MODEL = 'accounts.User'

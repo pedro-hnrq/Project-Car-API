@@ -1,5 +1,6 @@
 from drf_spectacular.openapi import AutoSchema
 
+
 class CustomAutoSchema(AutoSchema):
     def get_tags(self, path, method):
         if 'token' in path:

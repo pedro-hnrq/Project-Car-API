@@ -3,9 +3,10 @@ from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 from django.utils.translation import gettext_lazy as _
 from .models import User
 
+
 class UserAdmin(BaseUserAdmin):
     list_display = ('email', 'first_name', 'last_name', 'is_staff')
-    ordering = ('email',) 
+    ordering = ('email',)
     fieldsets = (
         (None, {'fields': ('email', 'password')}),
         (_('Informações pessoais'), {'fields': ('first_name', 'last_name')}),
@@ -18,5 +19,6 @@ class UserAdmin(BaseUserAdmin):
             'fields': ('email', 'password1', 'password2'),
         }),
     )
+
 
 admin.site.register(User, UserAdmin)

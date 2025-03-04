@@ -1,10 +1,7 @@
 from rest_framework import serializers
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
-from django.utils import timezone
 from accounts.models import User
-from django.contrib.auth import get_user_model
 
-User = get_user_model()
 
 class LoginSerializer(TokenObtainPairSerializer):
     @classmethod
@@ -13,35 +10,31 @@ class LoginSerializer(TokenObtainPairSerializer):
         Gera o token JWT com informações adicionais.
         """
         token = super().get_token(user)
-        token['user_id'] = user.id  
+        token['user_id'] = user.id
         return token
 
     def validate(self, attrs):
-        data = super().validate(attrs)  
-        token = self.get_token(self.user)  
+        data = super().validate(attrs)
+        token = self.get_token(self.user)
 
-        
         return {
             "access_token": data.pop('access'),
             "refresh_token": data.pop('refresh'),
-            "type": "Bearer", 
-            "expiration_at": token["exp"],  
-            "issued_at": token["iat"],  
-            "jti": token["jti"],  
+            "type": "Bearer",
+            "expiration_at": token["exp"],
+            "issued_at": token["iat"],
+            "jti": token["jti"],
             "user": {
                 'id': self.user.id,
                 'email': self.user.email
-            },  
+            },
         }
 
-        
-        
-    
 
 class RegistrationSerializer(serializers.ModelSerializer):
     password = serializers.CharField(
-        write_only=True, 
-        required=True, 
+        write_only=True,
+        required=True,
         style={'input_type': 'password'}
     )
 

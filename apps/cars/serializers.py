@@ -4,6 +4,7 @@ from django.contrib.auth import get_user_model
 
 User = get_user_model()
 
+
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
@@ -22,18 +23,19 @@ class BrandModelSerializer(serializers.ModelSerializer):
 
 
 class CarModelSerializer(serializers.ModelSerializer):
-    owner = UserSerializer(read_only=True)     
-    brand = serializers.CharField() 
+    owner = UserSerializer(read_only=True)
+    brand = serializers.CharField()
+
     class Meta:
         model = Car
         fields = [
-            'id', 
+            'id',
             'model',
-            'brand',             
+            'brand',
             'color',
             'factory_year',
-            'model_year',  
-            'description',            
+            'model_year',
+            'description',
             'owner',
             'created_at',
             'updated_at'
@@ -59,7 +61,7 @@ class CarModelSerializer(serializers.ModelSerializer):
                 brand = Brand.objects.get(name=brand_data)
             except Brand.DoesNotExist:
                 raise serializers.ValidationError("Marca não encontrada com o ID ou nome fornecido.")
-        
+
         car = Car.objects.create(brand=brand, owner=owner, **validated_data)
         return car
 
@@ -85,5 +87,3 @@ class CarModelSerializer(serializers.ModelSerializer):
 
         instance.save()
         return instance
-
-        
