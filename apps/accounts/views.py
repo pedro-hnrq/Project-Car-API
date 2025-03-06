@@ -1,5 +1,5 @@
-from rest_framework_simplejwt.views import TokenObtainPairView
-from .serializers import LoginSerializer, RegistrationSerializer
+from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView, TokenVerifyView
+from .serializers import LoginSerializer, RegistrationSerializer, CustomTokenRefreshSerializer, CustomTokenVerifySerializer
 from drf_spectacular.utils import extend_schema
 from rest_framework import generics
 
@@ -14,3 +14,13 @@ class RegistrationView(generics.CreateAPIView):
     serializer_class = RegistrationSerializer
     authentication_classes = []
     permission_classes = []
+
+
+@extend_schema(tags=['Auth'])
+class CustomTokenRefreshView(TokenRefreshView):
+    serializer_class = CustomTokenRefreshSerializer
+
+
+@extend_schema(tags=['Auth'])
+class CustomTokenVerifyView(TokenVerifyView):
+    serializer_class = CustomTokenVerifySerializer

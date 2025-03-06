@@ -22,6 +22,7 @@ class Brand(models.Model):
 class Car(models.Model):
     model = models.CharField(_('Modelo'), max_length=100, db_index=True)
     brand = models.ForeignKey(Brand, on_delete=models.PROTECT, verbose_name='Marca')
+    image = models.ImageField(_('Imagem'), upload_to='cars/', null=True, blank=True)
     factory_year = models.IntegerField(_('Ano de fabricação'), null=True)
     model_year = models.IntegerField(_('Ano do modelo'), null=True)
     color = models.CharField(_('Cor'), max_length=50, null=True, blank=True)

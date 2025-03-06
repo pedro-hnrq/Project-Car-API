@@ -25,6 +25,7 @@ class BrandModelSerializer(serializers.ModelSerializer):
 class CarModelSerializer(serializers.ModelSerializer):
     owner = UserSerializer(read_only=True)
     brand = serializers.CharField()
+    image = serializers.ImageField(required=False, allow_null=True)
 
     class Meta:
         model = Car
@@ -32,6 +33,7 @@ class CarModelSerializer(serializers.ModelSerializer):
             'id',
             'model',
             'brand',
+            'image',
             'color',
             'factory_year',
             'model_year',

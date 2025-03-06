@@ -10,6 +10,6 @@ class BrandAdmin(admin.ModelAdmin):
 
 @admin.register(Car)
 class CarAdmin(admin.ModelAdmin):
-    list_display = ('id', 'model', 'brand__name', 'color', 'factory_year', 'model_year', 'created_at',)
+    list_display = ('id', 'model', 'brand__name', 'image', 'color', 'factory_year', 'model_year', 'created_at',)
     search_fields = ('model',)
     list_filter = ('brand',)
