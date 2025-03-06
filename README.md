@@ -15,7 +15,7 @@
 
 ### 📷 Prévia
 
-![image](https://github.com/user-attachments/assets/aab9e6bc-a7d0-4d84-9018-059b059a01e5)
+![Project car](https://github.com/user-attachments/assets/46176c44-651e-4cd9-8ed1-d5b14862c78d)
 
 
 
@@ -261,7 +261,9 @@ Estrutura da coleção:
 Project Car API
 ├── Auth
 │   ├── Login
-│   └── Register
+│   ├── Register
+│   ├── Refresh
+│   └── Verify
 ├── Cars
 │   ├── List All
 │   ├── Get Single
