@@ -1,6 +1,7 @@
 asgiref==3.8.1
 attrs==25.1.0
 cachetools==5.5.0
+coverage==7.6.12
 Django==5.1.1
 django-filter==24.3
 django-rql==4.4.1
@@ -16,6 +17,7 @@ lib-rql==2.0.2
 Markdown==3.7
 mccabe==0.7.0
 packaging==24.2
+pillow==11.1.0
 psycopg2-binary==2.9.10
 pycodestyle==2.12.1
 pyflakes==3.2.0

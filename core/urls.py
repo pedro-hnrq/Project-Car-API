@@ -1,7 +1,9 @@
 from django.contrib import admin
 from django.urls import path, include
-from rest_framework_simplejwt import views as jwt_views
+# from rest_framework_simplejwt import views as jwt_views
 from drf_spectacular.views import SpectacularAPIView, SpectacularRedocView, SpectacularSwaggerView
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -16,11 +18,14 @@ urlpatterns = [
 
     # JWT
     # path('api/v2/token/', MyTokenObtainPairView.as_view(), name='token_obtain_pair'),
-    path('api/v2/token/refresh/', jwt_views.TokenRefreshView.as_view(), name='token_refresh'),
-    path('api/v2/token/verify/', jwt_views.TokenVerifyView.as_view(), name='token_verify'),
+    # path('api/v2/token/refresh/', jwt_views.TokenRefreshView.as_view(), name='token_refresh'),
+    # path('api/v2/token/verify/', jwt_views.TokenVerifyView.as_view(), name='token_verify'),
 
     # Swagger
     path('api/schema/', SpectacularAPIView.as_view(), name='schema'),
     path('api/swagger/', SpectacularSwaggerView.as_view(url_name='schema'), name='swagger-ui'),
     path('api/redoc/', SpectacularRedocView.as_view(url_name='schema'), name='redoc'),
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

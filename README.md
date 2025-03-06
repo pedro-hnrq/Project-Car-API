@@ -99,10 +99,41 @@ Executando o Projeto
 python manage.py runserver
 ```
 
-Teste Unitário
+🧪 Teste Unitário
+
+
+
+Executar o testes unitários da aplicação `accounts`:
+
 ```python
-python manage.py test
+python manage.py test accounts
 ```
+
+Executar o testes unitários da aplicação `cars`:
+
+```python
+python manage.py test cars
+```
+
+Cobertura de Testes - Coverage
+
+1. Executar os testes com cobertura na aplicação `accounts`:
+    ```
+    coverage run manage.py test accounts
+    ```
+2. Executar os testes com cobertura na aplicação `cars`:
+    ```
+    coverage run manage.py test cars
+   ```
+3. Gerar o relatório de cobertura:
+    ```
+    coverage report -m
+   ```
+4. Gerar o relatório de cobertura em HTML:
+    ```
+    coverage html
+   ```
+   
 
 #### 🗺️ APIs
 
@@ -162,8 +193,8 @@ Sucesso da resposta (200 OK)
 
 _Lembre-se_:
 
-- O token JWT tem validade de um dia e duração de 60 minutos. Após esse período, você precisará renová-lo usando o endpoint `POST /api/v1/refresh`.
-- Você pode verificar se o token expirou usando o endpoint POST `/api/v1/token/verify`.
+- O token JWT tem validade de um dia e duração de 60 minutos. Após esse período, você precisará renová-lo usando o endpoint `POST /api/accounts/token/refresh/`.
+- Você pode verificar se o token expirou usando o endpoint POST `/api/accounts/token/verify/`.
 
  🚗 Cars Endpoints
  
@@ -313,8 +344,6 @@ Para facilitar a execução e o desenvolvimento da API, utilizamos o Docker para
     ```bash
     docker compose down
     ```
-
-
 
 
 
